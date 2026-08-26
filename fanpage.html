@@ -1,0 +1,1121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jackie Chan | Fan Page</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=JetBrains+Mono:wght@500;700&family=Noto+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  /* ===========================================================
+     TOKENS
+     =========================================================== */
+  :root{
+    --ink:        #0b0908;
+    --bg:         #14100d;
+    --bg-alt:     #1e1712;
+    --panel:      #241b15;
+    --red:        #c8102e;
+    --red-deep:   #8c0c22;
+    --gold:       #e3b23c;
+    --gold-dim:   #a9822c;
+    --cream:      #f3e6cf;
+    --cream-dim:  #cbbb9c;
+
+    --font-display: 'Anton', sans-serif;
+    --font-body:    'Noto Sans', sans-serif;
+    --font-mono:    'JetBrains Mono', monospace;
+
+    --edge: 3px solid var(--gold);
+  }
+
+  [data-era="hollywood"]{
+    --bg:         #101318;
+    --bg-alt:     #171c24;
+    --panel:      #1c222c;
+    --red:        #d94a2b;
+    --red-deep:   #9c331d;
+    --gold:       #6fc7d9;
+    --gold-dim:   #4a93a3;
+    --cream:      #eef3f6;
+    --cream-dim:  #a9bac4;
+  }
+
+  *{ box-sizing: border-box; }
+  html{ scroll-behavior: smooth; }
+
+  body{
+    margin: 0;
+    background: var(--bg);
+    color: var(--cream);
+    font-family: var(--font-body);
+    line-height: 1.55;
+    transition: background .5s ease, color .5s ease;
+    overflow-x: hidden;
+  }
+
+  a{ color: inherit; }
+  img, svg{ display:block; max-width:100%; }
+
+  :focus-visible{
+    outline: 3px solid var(--gold);
+    outline-offset: 3px;
+  }
+
+  .wrap{
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* ===========================================================
+     SCREEN SHAKE ANIMATION
+     =========================================================== */
+  @keyframes shake {
+    0% { transform: translate(1px, 1px) rotate(0deg); }
+    20% { transform: translate(-4px, 1px) rotate(-1deg); }
+    40% { transform: translate(2px, -2px) rotate(1deg); }
+    60% { transform: translate(-2px, 3px) rotate(0deg); }
+    80% { transform: translate(4px, -1px) rotate(-1deg); }
+    100% { transform: translate(0, 0) rotate(0deg); }
+  }
+  .shake-it {
+    animation: shake 0.35s ease-in-out;
+  }
+
+  /* ===========================================================
+     FILM-STRIP TOP BAR
+     =========================================================== */
+  .filmstrip{
+    height: 14px;
+    width: 100%;
+    background:
+      repeating-linear-gradient(90deg,
+        var(--ink) 0 10px,
+        transparent 10px 22px);
+    background-color: var(--gold);
+  }
+
+  /* ===========================================================
+     HERO / POSTER BANNER
+     =========================================================== */
+  .hero{
+    position: relative;
+    padding: 72px 0 56px;
+    background:
+      radial-gradient(ellipse at 70% 0%, rgba(200,16,46,.25), transparent 60%),
+      linear-gradient(180deg, var(--bg-alt), var(--bg));
+    overflow: hidden;
+    border-bottom: var(--edge);
+  }
+
+  .action-lines{
+    position:absolute;
+    inset:0;
+    z-index:0;
+    opacity:.35;
+    pointer-events:none;
+  }
+
+  .hero-grid{
+    position:relative;
+    z-index:1;
+    display:grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 40px;
+    align-items:center;
+  }
+
+  .eyebrow{
+    display:inline-block;
+    font-family: var(--font-mono);
+    letter-spacing: .18em;
+    font-size: .72rem;
+    color: var(--gold);
+    border: 1px solid var(--gold-dim);
+    padding: 4px 10px;
+    border-radius: 2px;
+    margin-bottom: 18px;
+    text-transform: uppercase;
+  }
+
+  h1.name{
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: clamp(3rem, 8vw, 5.6rem);
+    line-height: .92;
+    letter-spacing: .01em;
+    margin: 0 0 10px;
+    color: var(--cream);
+    text-shadow: 4px 4px 0 var(--red-deep);
+  }
+
+  .tagline{
+    font-family: var(--font-display);
+    font-size: clamp(1.1rem, 2.4vw, 1.5rem);
+    color: var(--gold);
+    letter-spacing: .03em;
+    margin: 0 0 22px;
+  }
+
+  .lede{
+    max-width: 46ch;
+    color: var(--cream-dim);
+    font-size: 1.02rem;
+  }
+
+  .hero-stats{
+    display:flex;
+    gap: 28px;
+    margin-top: 28px;
+    flex-wrap: wrap;
+  }
+  .stat b{
+    display:block;
+    font-family: var(--font-mono);
+    font-size: 1.6rem;
+    color: var(--gold);
+  }
+  .stat span{
+    font-size: .78rem;
+    color: var(--cream-dim);
+    text-transform: uppercase;
+    letter-spacing: .08em;
+  }
+
+  .portrait{
+    position: relative;
+    aspect-ratio: 3/4;
+    background: linear-gradient(160deg, var(--panel), var(--bg-alt));
+    border: var(--edge);
+    border-radius: 4px;
+    overflow:hidden;
+  }
+  .portrait::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    z-index:2;
+    pointer-events:none;
+    background: repeating-linear-gradient(115deg, rgba(227,178,60,.06) 0 2px, transparent 2px 14px);
+  }
+  .portrait-layer{
+    position:absolute;
+    inset:0;
+    display:flex;
+    align-items:flex-end;
+    justify-content:center;
+    opacity: 0;
+    transform: scale(1.03);
+    transition: opacity .6s ease, transform .6s ease;
+  }
+  [data-era="classic"] .classic-layer,
+  [data-era="hollywood"] .hollywood-layer{
+    opacity: 1;
+    transform: scale(1);
+  }
+  .portrait-photo{
+    width:100%; height:100%;
+    object-fit: cover;
+    object-position: top center;
+  }
+  .portrait-fallback{
+    width:100%; height:100%;
+    display:flex;
+    align-items:flex-end;
+    justify-content:center;
+    padding-bottom: 30px;
+  }
+  .portrait-fallback svg{ width: 68%; height:auto; }
+
+  /* ===========================================================
+     SECTION SCAFFOLDING
+     =========================================================== */
+  section{ padding: 64px 0; }
+  section + section{ border-top: 1px solid rgba(227,178,60,.15); }
+
+  .section-head{
+    display:flex;
+    align-items:baseline;
+    gap: 14px;
+    margin-bottom: 32px;
+  }
+  .section-head h2{
+    font-family: var(--font-display);
+    font-weight:400;
+    font-size: clamp(1.6rem, 3.4vw, 2.2rem);
+    margin: 0;
+    color: var(--cream);
+  }
+  .section-head .num{
+    font-family: var(--font-mono);
+    color: var(--red);
+    font-size: .95rem;
+  }
+
+  .bio p{ max-width: 68ch; color: var(--cream-dim); }
+  .bio p strong{ color: var(--cream); }
+
+  /* ===========================================================
+     FACTS — FLIP CARDS
+     =========================================================== */
+  .facts-grid{
+    display:grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+  .flip-card{
+    perspective: 1200px;
+    height: 190px;
+  }
+  .flip-card button{
+    all: unset;
+    display:block;
+    width:100%;
+    height:100%;
+    cursor:pointer;
+  }
+  .flip-inner{
+    position:relative;
+    width:100%; height:100%;
+    transition: transform .6s cubic-bezier(.4,.2,.2,1);
+    transform-style: preserve-3d;
+  }
+  .flip-card.flipped .flip-inner{ transform: rotateY(180deg); }
+  .flip-face{
+    position:absolute; inset:0;
+    backface-visibility: hidden;
+    border-radius: 4px;
+    padding: 20px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    border: 1px solid var(--gold-dim);
+  }
+  .flip-front{ background: var(--panel); }
+  .flip-front .icon{ font-size: 1.8rem; margin-bottom: 10px; }
+  .flip-front h3{
+    font-family: var(--font-display);
+    font-weight:400;
+    font-size: 1.15rem;
+    margin: 0 0 6px;
+    color: var(--gold);
+  }
+  .flip-front span{
+    font-family: var(--font-mono);
+    font-size: .7rem;
+    color: var(--cream-dim);
+    text-transform: uppercase;
+    letter-spacing: .06em;
+  }
+  .flip-back{
+    background: var(--red-deep);
+    color: var(--cream);
+    transform: rotateY(180deg);
+    font-size: .92rem;
+  }
+
+  /* ===========================================================
+     STUNT GENERATOR & OUCH-O-METER
+     =========================================================== */
+  .stunt-panel{
+    background: var(--panel);
+    border: 1px solid var(--gold-dim);
+    border-left: var(--edge);
+    border-radius: 4px;
+    padding: 32px;
+    display:grid;
+    grid-template-columns: 1fr auto;
+    gap: 24px;
+    align-items:center;
+  }
+  .stunt-readout{
+    font-family: var(--font-mono);
+    font-size: clamp(1.1rem, 2.6vw, 1.5rem);
+    color: var(--gold);
+    min-height: 2.6em;
+  }
+  .stunt-readout .prefix{ color: var(--cream-dim); font-size:.75rem; display:block; letter-spacing:.08em; text-transform:uppercase; margin-bottom:6px;}
+  
+  .metrics-row {
+    display: flex;
+    gap: 20px;
+    margin-top: 14px;
+    flex-wrap: wrap;
+  }
+  .stunt-counter, .ouch-counter{
+    font-size: .82rem;
+    color: var(--cream-dim);
+  }
+  .stunt-counter b, .ouch-counter b{ color: var(--red); font-family: var(--font-mono); }
+
+  button.cta{
+    all: unset;
+    cursor:pointer;
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    letter-spacing: .04em;
+    background: var(--red);
+    color: var(--cream);
+    padding: 16px 26px;
+    border-radius: 3px;
+    text-align:center;
+    transition: transform .15s ease, background .2s ease;
+    white-space: nowrap;
+  }
+  button.cta:hover{ background: var(--red-deep); transform: translateY(-2px); }
+  button.cta:active{ transform: translateY(0) scale(.98); }
+
+  /* ===========================================================
+     FEATURE: DANGEROUS PROP RANDOMIZER
+     =========================================================== */
+  .prop-card{
+    background: var(--panel);
+    border: 1px solid var(--gold-dim);
+    border-radius: 4px;
+    padding: 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  .prop-display h3{
+    font-family: var(--font-display);
+    font-size: 1.3rem;
+    color: var(--gold);
+    margin: 0 0 4px;
+  }
+  .prop-display p{
+    margin: 0;
+    font-size: .88rem;
+    color: var(--cream-dim);
+  }
+  .prop-danger{
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: .72rem;
+    background: var(--red-deep);
+    color: var(--cream);
+    padding: 4px 8px;
+    border-radius: 2px;
+    margin-top: 6px;
+  }
+
+  /* ===========================================================
+     FEATURE: "JUMP THE ALLEYWAY" GRAVITY DEFIER MINI-GAME
+     =========================================================== */
+  .game-panel{
+    background: var(--panel);
+    border: 1px solid var(--gold-dim);
+    border-radius: 4px;
+    padding: 32px;
+  }
+  .game-layout{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 24px;
+    flex-wrap: wrap;
+    margin-bottom: 24px;
+  }
+  .game-info h3{
+    font-family: var(--font-display);
+    font-size: 1.3rem;
+    color: var(--gold);
+    margin: 0 0 4px;
+  }
+  .game-info p{
+    margin: 0;
+    font-size: .88rem;
+    color: var(--cream-dim);
+  }
+  .game-track{
+    position: relative;
+    height: 36px;
+    background: var(--bg-alt);
+    border: 1px solid var(--gold-dim);
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 20px;
+  }
+  .game-target-zone{
+    position: absolute;
+    top: 0; bottom: 0;
+    left: 65%;
+    width: 15%;
+    background: rgba(227, 178, 60, 0.25);
+    border-left: 2px dashed var(--gold);
+    border-right: 2px dashed var(--gold);
+  }
+  .game-runner{
+    position: absolute;
+    top: 4px; bottom: 4px;
+    left: 0%;
+    width: 12px;
+    background: var(--red);
+    border-radius: 2px;
+    transition: left 0.05s linear;
+  }
+  .game-controls{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .game-result-text{
+    font-family: var(--font-mono);
+    font-size: 0.95rem;
+    color: var(--gold);
+  }
+  .game-score-board{
+    font-family: var(--font-mono);
+    font-size: 0.82rem;
+    color: var(--cream-dim);
+  }
+  .game-score-board b{ color: var(--gold); }
+
+  /* ===========================================================
+     FILMOGRAPHY STRIP
+     =========================================================== */
+  .film-strip{
+    display:flex;
+    gap: 16px;
+    overflow-x: auto;
+    padding-bottom: 10px;
+    scroll-snap-type: x mandatory;
+  }
+  .film-card{
+    scroll-snap-align: start;
+    flex: 0 0 180px;
+    background: linear-gradient(160deg, var(--panel), var(--bg-alt));
+    border: 1px solid var(--gold-dim);
+    border-radius: 4px;
+    padding: 18px 14px;
+    min-height: 220px;
+    display:flex;
+    flex-direction:column;
+    justify-content:flex-end;
+    position:relative;
+  }
+  .film-card .year{
+    font-family: var(--font-mono);
+    font-size: .7rem;
+    color: var(--gold-dim);
+    position:absolute;
+    top:14px; left:14px;
+  }
+  .film-card h4{
+    font-family: var(--font-display);
+    font-weight:400;
+    font-size: 1.05rem;
+    margin: 0 0 6px;
+    color: var(--cream);
+  }
+  .film-card p{
+    font-size: .78rem;
+    color: var(--cream-dim);
+    margin:0;
+  }
+
+  /* ===========================================================
+     FEATURE: FLOATING BANDAID STAMP TOOL
+     =========================================================== */
+  .medic-dock{
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    z-index: 20;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(20, 16, 13, 0.85);
+    border: 1px solid var(--gold-dim);
+    padding: 8px 14px;
+    border-radius: 999px;
+    backdrop-filter: blur(6px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+  }
+  .medic-btn{
+    all: unset;
+    cursor: pointer;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    background: var(--red);
+    color: var(--cream);
+    padding: 6px 12px;
+    border-radius: 999px;
+    text-transform: uppercase;
+    letter-spacing: .05em;
+    transition: background .2s;
+  }
+  .medic-btn.active{
+    background: var(--gold);
+    color: var(--ink);
+    font-weight: 700;
+  }
+  .medic-stats{
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--cream-dim);
+  }
+
+  .bandaid-stamp{
+    position: absolute;
+    width: 44px;
+    height: 18px;
+    background: #e2b082;
+    border: 1px solid #b88654;
+    border-radius: 3px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+    pointer-events: none;
+    transform: translate(-50%, -50%) rotate(var(--rot));
+    z-index: 9999;
+    animation: stampIn 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+  }
+  .bandaid-stamp::after {
+    content: "";
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 14px; height: 10px;
+    background: #f7e1cb;
+    border-radius: 1px;
+  }
+  @keyframes stampIn {
+    0% { transform: translate(-50%, -50%) scale(2) rotate(var(--rot)); opacity: 0; }
+    100% { transform: translate(-50%, -50%) scale(1) rotate(var(--rot)); opacity: 1; }
+  }
+
+  /* ===========================================================
+     THEME TOGGLE
+     =========================================================== */
+  .era-toggle{
+    position: fixed;
+    top: 18px;
+    right: 18px;
+    z-index: 20;
+    display: inline-flex;
+    background: rgba(15,12,10,.75);
+    border: 1px solid var(--gold-dim);
+    border-radius: 999px;
+    padding: 4px;
+    backdrop-filter: blur(6px);
+    box-shadow: 0 6px 24px rgba(0,0,0,.35);
+  }
+  .era-indicator{
+    position:absolute;
+    top:4px; left:4px;
+    width: calc(50% - 4px);
+    height: calc(100% - 8px);
+    border-radius: 999px;
+    background: linear-gradient(135deg, var(--red), var(--gold));
+    transition: transform .38s cubic-bezier(.65,0,.35,1), background .5s ease;
+    box-shadow: 0 0 14px rgba(227,178,60,.45);
+  }
+  [data-era="hollywood"] .era-indicator{
+    transform: translateX(100%);
+    background: linear-gradient(135deg, var(--gold-dim), var(--gold));
+    box-shadow: 0 0 14px rgba(111,199,217,.5);
+  }
+  .era-option{
+    all: unset;
+    position: relative;
+    z-index: 1;
+    cursor: pointer;
+    display:flex;
+    align-items:center;
+    gap: 6px;
+    padding: 9px 16px;
+    border-radius: 999px;
+    font-family: var(--font-mono);
+    font-size: .68rem;
+    text-transform: uppercase;
+    letter-spacing: .06em;
+    color: var(--cream-dim);
+    transition: color .3s ease, transform .15s ease;
+  }
+  .era-option .era-icon{ font-size: .95rem; }
+  .era-option:hover{ transform: translateY(-1px); }
+  .era-option[aria-pressed="true"]{
+    color: var(--ink);
+    font-weight: 700;
+  }
+
+  footer{
+    padding: 36px 0 60px;
+    text-align:center;
+    color: var(--cream-dim);
+    font-size: .8rem;
+  }
+  footer .filmstrip{ margin-bottom: 30px; }
+
+  @media (max-width: 820px){
+    .hero-grid{ grid-template-columns: 1fr; }
+    .portrait{ order:-1; max-width: 320px; margin: 0 auto; }
+    .facts-grid{ grid-template-columns: 1fr 1fr; }
+    .stunt-panel{ grid-template-columns: 1fr; text-align:center; }
+  }
+  @media (max-width: 520px){
+    .facts-grid{ grid-template-columns: 1fr; }
+    .era-toggle{ top:auto; bottom:70px; right:14px; }
+    .medic-dock{ left: 14px; bottom: 14px; }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{ animation-duration: .001ms !important; transition-duration: .001ms !important; scroll-behavior:auto !important; }
+  }
+</style>
+</head>
+<body data-era="classic">
+
+  <div class="era-toggle" role="group" aria-label="Switch era theme">
+    <span class="era-indicator" id="eraIndicator" aria-hidden="true"></span>
+    <button class="era-option" id="eraClassic" data-value="classic" aria-pressed="true">
+      <span class="era-icon" aria-hidden="true">🥋</span> Classic HK
+    </button>
+    <button class="era-option" id="eraHollywood" data-value="hollywood" aria-pressed="false">
+      <span class="era-icon" aria-hidden="true">🎬</span> Hollywood
+    </button>
+  </div>
+
+  <!-- FLOATING STUNT MEDIC DOCK -->
+  <div class="medic-dock">
+    <button class="medic-btn" id="medicBtn">🩹 Stunt Medic: OFF</button>
+    <div class="medic-stats">Bandages: <span id="medicCount">0</span></div>
+  </div>
+
+  <div class="filmstrip"></div>
+
+  <!-- ============ HERO ============ -->
+  <header class="hero">
+    <svg class="action-lines" viewBox="0 0 800 400" preserveAspectRatio="none" aria-hidden="true">
+      <g stroke="#e3b23c" stroke-width="2">
+        <line x1="0" y1="60" x2="300" y2="20"/>
+        <line x1="0" y1="120" x2="260" y2="90"/>
+        <line x1="0" y1="180" x2="220" y2="160"/>
+        <line x1="600" y1="0" x2="800" y2="80"/>
+        <line x1="650" y1="60" x2="800" y2="150"/>
+        <line x1="620" y1="320" x2="800" y2="260"/>
+        <line x1="600" y1="380" x2="800" y2="340"/>
+      </g>
+    </svg>
+
+    <div class="wrap hero-grid">
+      <div>
+        <span class="eyebrow">Fan Page &middot; Est. 2026</span>
+        <h1 class="name">JACKIE<br>CHAN</h1>
+        <p class="tagline">The King of Kung&nbsp;Fu Comedy</p>
+        <p class="lede">
+          Stuntman, choreographer, singer, director, and the reason a
+          generation learned that a ladder, a clock tower, and a leather jacket
+          could all be weapons. <strong>Chan Kong-sang</strong> turned physical
+          comedy and real, unfaked risk into a genre of his own.
+        </p>
+
+        <div class="hero-stats">
+          <div class="stat"><b>1954</b><span>Born, Hong Kong</span></div>
+          <div class="stat"><b>150+</b><span>Films</span></div>
+          <div class="stat"><b>60+</b><span>Years performing</span></div>
+        </div>
+      </div>
+
+      <div class="portrait" aria-label="Portrait swaps between Classic Hong Kong and Hollywood era look">
+        <div class="portrait-layer classic-layer">
+          <img class="portrait-photo" src="C:\School\Y2S1\IS216-G3-Web Application Development II\Week1\jackie-classic.jpg" alt="Jackie Chan, Classic Hong Kong era"
+                onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <div class="portrait-fallback" style="display:none;">
+            <svg viewBox="0 0 200 260" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <g fill="#e3b23c">
+                <circle cx="98" cy="34" r="16"/>
+                <path d="M92 48 L104 48 L112 100 L96 150 L80 100 Z"/>
+                <path d="M100 70 L150 40 L158 52 L112 90 Z"/>
+                <path d="M96 100 L60 70 L52 82 L88 112 Z"/>
+                <path d="M96 148 L60 150 L20 120 L28 106 L70 130 L100 128 Z"/>
+                <path d="M108 150 L150 210 L138 222 L96 168 Z"/>
+              </g>
+            </svg>
+          </div>
+        </div>
+
+        <div class="portrait-layer hollywood-layer">
+          <img class="portrait-photo" src="C:\School\Y2S1\IS216-G3-Web Application Development II\Week1\jackie-hollywood.jpg" alt="Jackie Chan, Hollywood era"
+                onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <div class="portrait-fallback" style="display:none;">
+            <svg viewBox="0 0 200 260" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <g fill="#6fc7d9">
+                <circle cx="100" cy="32" r="16"/>
+                <path d="M88 46 L112 46 L118 140 L100 170 L82 140 Z"/>
+                <path d="M112 60 L60 90 L66 104 L118 80 Z"/>
+                <path d="M88 60 L150 74 L146 90 L88 82 Z"/>
+                <path d="M92 168 L70 250 L86 254 L106 180 Z"/>
+                <path d="M108 168 L146 246 L130 254 L96 180 Z"/>
+                <rect x="80" y="82" width="40" height="70" rx="6"/>
+              </g>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============ BIO ============ -->
+  <section class="bio">
+    <div class="wrap">
+      <div class="section-head"><span class="num">01</span><h2>Who He Is</h2></div>
+      <p>
+        Born <strong>April 7, 1954</strong> in Hong Kong, Jackie Chan was enrolled
+        as a child at the China Drama Academy, where he trained for a decade in
+        acrobatics, martial arts, and Peking Opera performance alongside future
+        collaborators Sammo Hung and Yuen Biao. That grueling training became the
+        foundation for a career built on a simple, dangerous idea: perform the
+        stunts for real, and let the camera run.
+      </p>
+      <p>
+        Across films like <strong>Drunken Master</strong>, <strong>Police
+        Story</strong>, and <strong>Rush Hour</strong>, Chan pioneered a style
+        that blended slapstick comedy with genuinely bone-crunching action,
+        turning everyday objects and locations into elaborate fight choreography.
+      </p>
+    </div>
+  </section>
+
+  <!-- ============ DANGEROUS PROP RANDOMIZER ============ -->
+  <section class="prop-section">
+    <div class="wrap">
+      <div class="section-head"><span class="num">02</span><h2>Prop Weaponizer</h2></div>
+      <div class="prop-card">
+        <div class="prop-display">
+          <span class="prefix" style="font-size:0.7rem; color:var(--cream-dim); text-transform:uppercase; letter-spacing:.08em;">Randomly selected item:</span>
+          <h3 id="propName">A fragile Ming dynasty vase</h3>
+          <span class="prop-danger" id="propDanger">Danger Level: Extreme (Priceless Art)</span>
+        </div>
+        <button class="cta" id="propBtn" style="padding: 12px 20px; font-size: 0.95rem;">Find Another Prop 🪑</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FEATURE 3: JUMP THE ALLEYWAY MINI-GAME ============ -->
+  <section class="game-section">
+    <div class="wrap">
+      <div class="section-head"><span class="num">03</span><h2>Stuntman Gravity Defier</h2></div>
+      <div class="game-panel">
+        <div class="game-layout">
+          <div class="game-info">
+            <h3>Jump the Alleyway!</h3>
+            <p>Time your jump to land squarely in the golden target zone. Don't fall into the vegetable cart!</p>
+          </div>
+          <div class="game-score-board">
+            Successful Leaps: <b id="gameWins">0</b> | Crashes: <b id="gameLosses">0</b>
+          </div>
+        </div>
+
+        <div class="game-track" id="gameTrack">
+          <div class="game-target-zone" aria-hidden="true"></div>
+          <div class="game-runner" id="gameRunner" aria-hidden="true"></div>
+        </div>
+
+        <div class="game-controls">
+          <div class="game-result-text" id="gameResultText">Press "Jump!" when the red runner enters the gold zone.</div>
+          <button class="cta" id="gameBtn" style="padding: 12px 24px; font-size: 0.95rem;">Jump! 🏃‍♂️</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FACTS ============ -->
+  <section class="facts">
+    <div class="wrap">
+      <div class="section-head"><span class="num">04</span><h2>Fast Facts</h2></div>
+      <p style="color:var(--cream-dim); margin-top:-18px; margin-bottom:28px; font-size:.85rem;">Tap a card to flip it.</p>
+      <div class="facts-grid" id="factsGrid"></div>
+    </div>
+  </section>
+
+  <!-- ============ STUNT GENERATOR ============ -->
+  <section class="generator">
+    <div class="wrap">
+      <div class="section-head"><span class="num">05</span><h2>Stunt Move Generator</h2></div>
+      <div class="stunt-panel">
+        <div>
+          <div class="stunt-readout">
+            <span class="prefix">Next take:</span>
+            <span id="stuntText">Press the button to call "action."</span>
+          </div>
+          <div class="metrics-row">
+            <div class="stunt-counter">Takes generated: <b id="stuntCount">0</b></div>
+            <div class="ouch-counter">Bones cracked this session: <b id="ouchCount">0</b> 🦴</div>
+          </div>
+        </div>
+        <button class="cta" id="stuntBtn">Action! 🎬</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FILMOGRAPHY ============ -->
+  <section class="filmography">
+    <div class="wrap">
+      <div class="section-head"><span class="num">06</span><h2>Selected Filmography</h2></div>
+      <div class="film-strip" id="filmStrip"></div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="filmstrip"></div>
+    <div class="wrap">
+      <p>&copy; 2026 Jackie Chan Fan Page. No stuntmen were harmed in the making of this webpage.</p>
+    </div>
+  </footer>
+
+<script>
+(function(){
+  "use strict";
+
+  /* ---------- DATA ---------- */
+  var facts = [
+    { icon: "🥋", title: "Real Name", tag: "Identity", detail: "Born Chan Kong-sang; the stage name \"Jackie\" reportedly came from a construction site nickname he picked up as a teenager working in Australia." },
+    { icon: "🎭", title: "Opera School", tag: "Training", detail: "Trained for about ten years at the China Drama Academy in acrobatics, singing, and martial arts, forming the \"Seven Little Fortunes\" troupe." },
+    { icon: "🦴", title: "Real Stunts", tag: "Signature Style", detail: "Known for performing his own stunts without wires or CGI whenever possible, resulting in a long list of on-set injuries over the decades." },
+    { icon: "🏆", title: "Honorary Oscar", tag: "Recognition", detail: "Received an Honorary Academy Award in 2016 for a lifetime of extraordinary achievements, the first such honor given to a Hong Kong actor." },
+    { icon: "🐼", title: "Animation Voice", tag: "Beyond Live Action", detail: "Voiced Monkey in the Kung Fu Panda franchise, introducing his style of comedic martial arts to a newer audience." },
+    { icon: "🎵", title: "Recording Artist", tag: "Music", detail: "Has released dozens of albums and sung theme songs for his own films in multiple languages." }
+  ];
+
+  var films = [
+    { year:"1978", title:"Drunken Master", note:"Broke through by fusing comedy with Southern kung fu." },
+    { year:"1985", title:"Police Story", note:"Famous mall-atrium stunt shot largely in one continuous take." },
+    { year:"1995", title:"Rumble in the Bronx", note:"His breakout hit with Western audiences." },
+    { year:"1998", title:"Rush Hour", note:"Paired with Chris Tucker for a US box-office smash." },
+    { year:"2000", title:"Shanghai Noon", note:"Kung fu meets the American West." },
+    { year:"2008", title:"Kung Fu Panda", note:"Voiced Monkey in the animated hit." },
+    { year:"2016", title:"Honorary Oscar", note:"Career achievement recognized by the Academy." }
+  ];
+
+  var props = [
+    { name: "A fragile Ming dynasty vase", danger: "Danger Level: Extreme (Priceless Art)" },
+    { name: "A wooden stepladder", danger: "Danger Level: Medium (Versatile & Agile)" },
+    { name: "A steaming hot bowl of noodles", danger: "Danger Level: High (Thermal Scalding)" },
+    { name: "A leather motorcycle jacket", danger: "Danger Level: Low (Built-in Armor)" },
+    { name: "A bamboo scaffolding pole", danger: "Danger Level: High (Flexible Lever)" },
+    { name: "A child's red bicycle", danger: "Danger Level: Medium (Surprising Mobility)" },
+    { name: "A grandfather clock", danger: "Danger Level: Severe (Gravity Hazard)" }
+  ];
+
+  var stuntPrefixes = ["A rooftop-to-rooftop", "A ladder-vs-clocktower", "A back-alley", "A moving-bus", "A market-stall", "A scaffolding", "A double-decker-bus", "A bicycle-chase"];
+  var stuntMoves    = ["flying kick", "umbrella parry", "table-slide dodge", "somersault escape", "improvised nunchaku block", "wall-run", "one-handed cartwheel", "chair-swing counter"];
+  var stuntEndings  = ["lands clean on the first try.", "goes slightly wrong, and that's the take they keep.", "ends with a very familiar visit to the on-set medic.", "gets a round of applause from the whole crew.", "requires three safety mats and a prayer.", "somehow still gets a laugh from the extras."];
+
+  /* ---------- BUILD FACT CARDS ---------- */
+  var grid = document.getElementById("factsGrid");
+  facts.forEach(function(f){
+    var card = document.createElement("div");
+    card.className = "flip-card";
+    card.innerHTML =
+      '<button type="button" aria-pressed="false" aria-label="Fact card: ' + f.title + '. Press to flip.">' +
+        '<div class="flip-inner">' +
+          '<div class="flip-face flip-front">' +
+            '<div class="icon" aria-hidden="true">' + f.icon + '</div>' +
+            '<h3>' + f.title + '</h3>' +
+            '<span>' + f.tag + '</span>' +
+          '</div>' +
+          '<div class="flip-face flip-back">' + f.detail + '</div>' +
+        '</div>' +
+      '</button>';
+    var btn = card.querySelector("button");
+    btn.addEventListener("click", function(){
+      var flipped = card.classList.toggle("flipped");
+      btn.setAttribute("aria-pressed", flipped ? "true" : "false");
+    });
+    grid.appendChild(card);
+  });
+
+  /* ---------- BUILD FILM STRIP ---------- */
+  var strip = document.getElementById("filmStrip");
+  films.forEach(function(m){
+    var card = document.createElement("div");
+    card.className = "film-card";
+    card.innerHTML =
+      '<span class="year">' + m.year + '</span>' +
+      '<h4>' + m.title + '</h4>' +
+      '<p>' + m.note + '</p>';
+    strip.appendChild(card);
+  });
+
+  /* ---------- HELPER: RANDOM PICK ---------- */
+  function pick(arr){ return arr[Math.floor(Math.random() * arr.length)]; }
+
+  /* ---------- FEATURE 1: PROP WEAPONIZER ---------- */
+  var propBtn = document.getElementById("propBtn");
+  var propName = document.getElementById("propName");
+  var propDanger = document.getElementById("propDanger");
+
+  propBtn.addEventListener("click", function(){
+    var selected = pick(props);
+    propName.textContent = selected.name;
+    propDanger.textContent = selected.danger;
+  });
+
+  /* ---------- COMEDY SOUND EFFECT (Web Audio API) ---------- */
+  function playActionSound() {
+    try {
+      var AudioContext = window.AudioContext || window.webkitAudioContext;
+      if (!AudioContext) return;
+      var ctx = new AudioContext();
+
+      var osc = ctx.createOscillator();
+      var gain = ctx.createGain();
+
+      osc.type = 'triangle';
+      osc.frequency.setValueAtTime(150, ctx.currentTime);
+      osc.frequency.exponentialRampToValueAtTime(600, ctx.currentTime + 0.15);
+
+      gain.gain.setValueAtTime(0.15, ctx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.18);
+
+      osc.connect(gain);
+      gain.connect(ctx.destination);
+
+      osc.start();
+      osc.stop(ctx.currentTime + 0.18);
+    } catch(e) {}
+  }
+
+  /* ---------- FEATURE 3: JUMP THE ALLEYWAY MINI-GAME LOGIC (Resets on refresh) ---------- */
+  var gameBtn = document.getElementById("gameBtn");
+  var gameRunner = document.getElementById("gameRunner");
+  var gameResultText = document.getElementById("gameResultText");
+  var gameWinsEl = document.getElementById("gameWins");
+  var gameLossesEl = document.getElementById("gameLosses");
+
+  var gameWins = 0;
+  var gameLosses = 0;
+
+  var runnerPos = 0;
+  var runnerDir = 1;
+  var gameRunning = true;
+  var animationInterval = null;
+
+  function startRunner() {
+    runnerPos = 0;
+    runnerDir = 1;
+    gameRunning = true;
+    gameResultText.textContent = "Running across the rooftop... Jump now!";
+    gameBtn.textContent = "Jump! 🏃‍♂️";
+
+    if (animationInterval) clearInterval(animationInterval);
+
+    animationInterval = setInterval(function(){
+      if (!gameRunning) return;
+      runnerPos += 1.8 * runnerDir;
+      if (runnerPos >= 96) {
+        runnerDir = -1;
+      } else if (runnerPos <= 0) {
+        runnerDir = 1;
+      }
+      gameRunner.style.left = runnerPos + "%";
+    }, 25);
+  }
+
+  gameBtn.addEventListener("click", function(){
+    if (!gameRunning) {
+      startRunner();
+      return;
+    }
+
+    gameRunning = false;
+    clearInterval(animationInterval);
+    playActionSound();
+
+    if (runnerPos >= 65 && runnerPos <= 80) {
+      gameWins++;
+      gameWinsEl.textContent = gameWins;
+      gameResultText.textContent = "Success! Roof cleared cleanly with style! 🌟";
+      gameBtn.textContent = "Play Again 🎬";
+      document.body.classList.remove("shake-it");
+      void document.body.offsetWidth;
+      document.body.classList.add("shake-it");
+    } else {
+      gameLosses++;
+      gameLossesEl.textContent = gameLosses;
+      gameResultText.textContent = "Missed! Landed in a vegetable cart. -$500 prop damage! 🥬";
+      gameBtn.textContent = "Try Again 🔄";
+    }
+  });
+
+  startRunner();
+
+  /* ---------- SCREEN SHAKE & STUNT GENERATOR (Resets on refresh) ---------- */
+  var stuntBtn   = document.getElementById("stuntBtn");
+  var stuntText  = document.getElementById("stuntText");
+  var stuntCount = document.getElementById("stuntCount");
+  var ouchCount  = document.getElementById("ouchCount");
+
+  var count = 0;
+  var ouchTotal = 0;
+
+  stuntBtn.addEventListener("click", function(){
+    playActionSound();
+
+    document.body.classList.remove("shake-it");
+    void document.body.offsetWidth;
+    document.body.classList.add("shake-it");
+
+    var line = pick(stuntPrefixes) + " " + pick(stuntMoves) + " — " + pick(stuntEndings);
+    stuntText.textContent = line;
+    
+    count++;
+    var bonesHit = Math.floor(Math.random() * 3) + 1;
+    ouchTotal += bonesHit;
+
+    stuntCount.textContent = count;
+    ouchCount.textContent = ouchTotal;
+  });
+
+  /* ---------- FEATURE: STUNT MEDIC BANDAID STAMPER (Resets on refresh) ---------- */
+  var medicBtn = document.getElementById("medicBtn");
+  var medicCount = document.getElementById("medicCount");
+  var medicActive = false;
+  var bandaidsApplied = 0;
+
+  medicBtn.addEventListener("click", function(){
+    medicActive = !medicActive;
+    medicBtn.classList.toggle("active", medicActive);
+    medicBtn.textContent = medicActive ? "🩹 Stunt Medic: ON" : "🩹 Stunt Medic: OFF";
+  });
+
+  document.addEventListener("click", function(e){
+    if(!medicActive) return;
+    if(e.target.closest("button") && e.target !== medicBtn) return;
+
+    var stamp = document.createElement("div");
+    stamp.className = "bandaid-stamp";
+    stamp.style.left = e.pageX + "px";
+    stamp.style.top = e.pageY + "px";
+    stamp.style.setProperty("--rot", (Math.random() * 90 - 45) + "deg");
+    document.body.appendChild(stamp);
+
+    bandaidsApplied++;
+    medicCount.textContent = bandaidsApplied;
+  });
+
+  /* ---------- ERA THEME TOGGLE ---------- */
+  var body       = document.body;
+  var btnClassic = document.getElementById("eraClassic");
+  var btnHolly   = document.getElementById("eraHollywood");
+  var savedEra   = localStorage.getItem("jc_era") || "classic";
+  applyEra(savedEra);
+
+  btnClassic.addEventListener("click", function(){ applyEra("classic"); localStorage.setItem("jc_era", "classic"); });
+  btnHolly.addEventListener("click",   function(){ applyEra("hollywood"); localStorage.setItem("jc_era", "hollywood"); });
+
+  function applyEra(era){
+    body.setAttribute("data-era", era);
+    btnClassic.setAttribute("aria-pressed", era === "classic" ? "true" : "false");
+    btnHolly.setAttribute("aria-pressed", era === "hollywood" ? "true" : "false");
+  }
+})();
+</script>
+</body>
+</html>
